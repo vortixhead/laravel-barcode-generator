@@ -510,7 +510,7 @@ class BarCode extends BarCodePoint
 
     protected function createImage() {
         // Draw barcode to the screen or save in a file
-        $path = "public/barcode";
+        $path = public_path("public/barcode");
         if (!file_exists($path)) {
            try {
                 mkdir($path);
