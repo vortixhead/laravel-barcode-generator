@@ -512,7 +512,12 @@ class BarCode extends BarCodePoint
         // Draw barcode to the screen or save in a file
         $path = "public/barcode";
         if (!file_exists($path)) {
-            mkdir('barcode');
+           try {
+                mkdir($path);
+            } catch (\Throwable $th) {
+               \Log::error('Error; creating barcode directory');
+               \Log::error($th);
+            }
         }
         if ( $this->filepath=="" ) {
             header('Content-Type: image/jpeg');
